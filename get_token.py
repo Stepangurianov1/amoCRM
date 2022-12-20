@@ -1,0 +1,15 @@
+import requests
+import json
+
+
+data = {'client_id': '112581d5-75d6-4c34-9aa7-3795900aea1c',
+        'client_secret': 'czHNUFrLCKF9B6uPJ2P21qVsS6OsMQSS4GkNCE2GUd8X2Y7LEovdfb2hnvskiEaC',
+        'grant_type': 'authorization_code',
+        'code': 'def5020015ee41c44133e30353c4487f46d1ab40fe7bea10275f1f3022a1c49537a37303a09137f6a02e11c60ad950a29d0d70362b76169e58e0144c627f41143b907339f5be543d9587cd0b0f9e14b5b6bee8140fe131cc6ffa5ca0ca7dfb67d30d97b6965714cfd10cd50a760f139052229db568f64f2805ad3292b36db27a7df3ef11c4d358553bc925442a5f229bfe468bad8e00b57626a616dbf936793412e72a06beb34c5154b9d05b9425fb80088779b0de1cb53f46819b9851075394d9fc25fe6932b3ea14da06c190a4b3dd591422459a6a441b9717e1ea7ed6e09191aa0c2f3921cb01e2a76d7471bb7ae47316011467f7037d4eeeafab99a75ad5aed5b6f0131849b040786c0f08ededf2c5bb67ba0c4bd1072a5be2a1f4690d16922282b1952c8b35df2911c3e04c7928a2a9330240449abf523d9445ba8ba9fc30f1de492a82e70273951c825d7abafc0d23ae9b78eb1535a0ee3ac447d1cf2b64bcb5ec6c01c2e2bc00494f9cf06ffb2c0134060a0526b9e0133403d8b982ec6f11d2cb2c897472bca783f106bc72ae526da602210eced5b74dceec5373a3b69dcf831f61bb8a9fe2b43c8b669e6f240314b72f9caf82fe733c7a30521ddd6883bcaf955ed039947f14c94ea9bf53de01cbbfc929fdb4ca2e208d3ef296080cce8424998a6d28e235bfc903d9aadc640ec3aae43ea0d68d7e1a2376e75f5d38c5fd71d33ba3dc0e3d9da039',
+        'redirect_uri': 'https://colab.research.google.com/drive/1luMkNwV3hZI_vLl52emxHj_nRK32ijCS'}
+
+new_url = 'https://stepangurianov.amocrm.ru/oauth2/access_token'
+request = requests.post(new_url, data=data)
+request_dict = json.loads(request.text)
+with open("data_file.json", "w") as write_file:
+    json.dump(request_dict, write_file)
